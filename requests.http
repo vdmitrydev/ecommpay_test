@@ -1,0 +1,47 @@
+### 200
+POST http://localhost:8080/process
+Content-Type: application/json
+
+{
+  "amount": 100,
+  "currency": "USD",
+  "pan": "1234123412341234",
+  "cvv": "333",
+  "expiry": "2029-07"
+}
+
+### 400 invalid PAN
+POST http://localhost:8080/process
+Content-Type: application/json
+
+{
+"amount": 100,
+"currency": "USD",
+"pan": "12341234123412340",
+"cvv": "333",
+"expiry": "2029-07"
+}
+
+### 500 http error
+POST http://localhost:8080/process
+Content-Type: application/json
+
+{
+  "amount": 100,
+  "currency": "USD",
+  "pan": "1234123412341234",
+  "cvv": "666",
+  "expiry": "2029-07"
+}
+
+### 500 provider exception
+POST http://localhost:8080/process
+Content-Type: application/json
+
+{
+  "amount": 100,
+  "currency": "USD",
+  "pan": "1234123412341234",
+  "cvv": "000",
+  "expiry": "2029-07"
+}
